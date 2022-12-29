@@ -5,9 +5,13 @@ def make_star_strings(lst):
       lst (list of nonnegative integers): the list
     Returns: A list of strings of stars (*)
     """
-
-    ### Replace pass with your code
-    pass
+    starlst = []
+    for i in lst:
+        temp = ""
+        for j in range(i):
+            temp += "*"
+        starlst.append(temp)
+    return starlst
 
 
 #############################################################
