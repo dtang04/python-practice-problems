@@ -9,7 +9,7 @@ def sublists(lst):
 
     if len(lst) == 2:
         return [[],[lst[0]],[lst[1]],lst[:]]
-    if len(lst) == 1:
+    elif len(lst) == 1:
         return [[],[lst[0]]]
     else:
         arr = sublists(lst[1:])
