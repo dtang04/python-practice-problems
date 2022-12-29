@@ -7,7 +7,18 @@ def sublists(lst):
     Returns: (list of list of values) list of all sublists of lst.
     """
 
-    pass
+    if len(lst) == 2:
+        return [[],[lst[0]],[lst[1]],lst[:]]
+    if len(lst) == 1:
+        return [[],[lst[0]]]
+    else:
+        arr = sublists(lst[1:])
+        lenarr = len(arr)
+        for i in range(lenarr):
+            temp = arr[i][:]
+            temp.insert(0,lst[0])
+            arr.append(temp[:])
+        return arr          
 
 
 #############################################################
