@@ -7,10 +7,22 @@ def rows_and_columns_contain(lst, target):
     Returns: True if every row and every column of lst contains
       target, False otherwise
     """
+    #Check rows
+    for i,sublst in enumerate(lst):
+        if target not in sublst:
+            return False
+    #Check cols
+    for i,_ in enumerate(lst[0]):
+        contains = False
+        for j,_ in enumerate(lst):
+            if lst[j][i] == target:
+                contains = True
+        if contains == False:
+            return False
+    return True
 
-    ### Replace pass with your code
-    pass
-
+lst = [[1,2],[3,2]]
+print(rows_and_columns_contain(lst,2))
 
 #############################################################
 ###                                                       ###
