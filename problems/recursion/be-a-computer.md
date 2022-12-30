@@ -133,6 +133,55 @@ What is the output of the following code?
     print("Result:")
     mystery2(4)
 
+mystery2(4)
+    mystery2(3)
+        mystery2(2)
+            mystery2(1)
+                mystery2(0)
+                    return
+                print(1)
+                mystery2(-1)
+                    return
+                return
+            print(2)
+            mystery2(0)
+                return
+            return
+        print(3)
+        mystery2(1)
+            mystery2(0)
+                return
+            print(1)
+            mystery2(-1)
+                return
+            return
+        return
+    print(4)
+        mystery(2)
+            mystery(1)
+                mystery(0)
+                    return
+                print(1)
+                mystery(-1)
+                    return
+                return
+            print(2)
+            mystery(0)
+                return
+            return
+        return
+    return
+
+Output:
+1
+2
+3
+1
+4
+1
+2 
+    
+
 ## Exercise #4
 
 This exercise is a bit more challenging than the previous ones. What is the output of the following code?
@@ -149,7 +198,6 @@ This exercise is a bit more challenging than the previous ones. What is the outp
         else:
             return mystery3(s[1:], c, d, x)
 
-
     def recursion_warmup():
         output_str = 'mystery3("{}", "a", "b", 0): {}'
         for s in ["ab", "abab", "abaab", "ababb", "ababaa"]:
@@ -157,3 +205,45 @@ This exercise is a bit more challenging than the previous ones. What is the outp
 
     print("Result:")
     recursion_warmup()
+
+recursion_warmup()
+    mystery3("ab","a","b",0)
+        s = "ab", c = "a", d = "b", x = 0
+            return mystery3("b","a","b",1)
+                s = "b", c = "a", d = "b", x = 1
+                    return mystery3("","a","b",0) 
+                        return 0
+    mystery3("abab","a","b",0)
+        s = "abab", c = "a", d = "b", x = 0
+            return mystery3("bab","a","b",1)
+                s = "bab", c = "a", d = "b", x = 1
+                    return mystery3("ab","a","b",0)
+                        s = "ab", c = "a", d = "b", x = 0
+                            return mystery3("b","a","b",1)
+                                s = "b", c = "a", d = "b", x = 1
+                                    return mystery3("","a","b",0)
+                                        return 0
+    mystery3("ababb")
+        s = "ababb", c = "a", d = "b", x = 0
+            return mystery3("babb","a","b",1)
+                s = "babb", c = "a", d = "b", x = 1
+                    return mystery3("abb","a","b",0)
+                        s = "abb", c = "a", d = "b", x = 0
+                            return mystery3("bb","a","b",1)
+                                s = "bb", c = "a", d = "b", x = 1
+                                    return mystery3("b","a","b",0)
+                                        s = "b", c = "a", d = "b", x = 0
+                                            return mystery3("b","a","b",0)
+                                                s = "", c = "a", d = "b", x = -1
+                                                    return mystery3("","a","b",-1)
+                                                        return -1
+    
+    For every instance of "a" x increases by 1, and for every instance of "b" x decreases by 1. If there are more instances of "b" than "a", the program will always output -1.
+    Using this, we can calculate the other recursive calls:
+
+    Output:
+        mystery3("ab","a","b",0): 0
+        mystery3("abab","a","b",0): 0
+        mystery3("abaab","a","b",0): 1
+        mystery3("ababb","a","b",0): -1
+        mystery4("ababaa","a","b",0): 2
