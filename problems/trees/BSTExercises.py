@@ -120,6 +120,21 @@ class Node:
             current.right = Empty()
         return current
 
+    def path_to(self,val):
+        if self.value == val:
+            return [val]
+        elif self.value < val:
+            lst = [self.value]
+            lst += self.right.path_to(val)
+            return lst
+        else:
+            lst = [self.value]
+            lst += self.left.path_to(val)
+            return lst
+    
+    def __str__(self):
+        return str(bst.inorder())
+
 if __name__ == "__main__": #BST Tester Function
     bst = Empty().insert(42).insert(10).insert(15).insert(63).insert(9).insert(54).insert(99).insert(2).insert(121).insert(110).insert(112).insert(115)
     bst2 = Empty().insert(3).insert(2).insert(4).insert(5)
@@ -130,3 +145,5 @@ if __name__ == "__main__": #BST Tester Function
     print(bst.max_item())
     bst3 = bst.add_to_all(5)
     print(bst3.inorder())
+    print(bst.path_to(115))
+    print(bst)
