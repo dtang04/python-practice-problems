@@ -47,12 +47,8 @@ def part2(rules):
     lst = []
     stack.append("shiny gold")
     counter = 0
-    print(rules)
     while len(stack) > 0:
-        print(stack, counter)
         current = stack.pop(0)
-        print(current)
-        flag = False
         for colors in rules:
             if current == colors:
                 for color,num in rules[current]:
