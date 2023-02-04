@@ -41,10 +41,25 @@ def part2(rules):
              of (color, amount)
     Returns an integer
     """
-
-    ### Replace with your code
-    return None
-
+    stack = []
+    numcombinations = 0
+    counter = 0
+    lst = []
+    stack.append("shiny gold")
+    counter = 0
+    print(rules)
+    while len(stack) > 0:
+        print(stack, counter)
+        current = stack.pop(0)
+        print(current)
+        flag = False
+        for colors in rules:
+            if current == colors:
+                for color,num in rules[current]:
+                    counter += num
+                    for i in range(num):
+                        stack.insert(0,color)
+    return counter
 
 ############################################
 ###                                      ###
@@ -99,4 +114,4 @@ if __name__ == "__main__":
     print(f"Part 1:", part1(rules))
     
     # Uncomment the following line when you're ready to work on Part 2
-    #print(f"Part 2:", part2(rules))
+    print(f"Part 2:", part2(rules))
