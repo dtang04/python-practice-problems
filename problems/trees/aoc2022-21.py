@@ -48,7 +48,7 @@ def part2(monkeys):
     half2 = monkeys["root"][2]
     match = solve(monkeys, half2)
     half1 = monkeys["root"][0]
-    val = -20000
+    val = 0
     res = solve2(val,half1,monkeys)
     status = False
     prev = False
