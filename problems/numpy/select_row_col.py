@@ -11,9 +11,15 @@ def select_row_col(x, row_idx=None, col_idx=None):
 
     # YOUR CODE HERE
     # Replace None with an appropriate return value
-    return None
-
-
+    if row_idx == None and col_idx == None:
+        return x
+    elif row_idx == None:
+        return x[:,col_idx]
+    elif col_idx == None:
+        return x[row_idx,:]
+    rows = x[row_idx,:]
+    cols = rows[:,col_idx]
+    return cols
 #############################################################
 ###                                                       ###
 ###                    Testing code.                      ###
