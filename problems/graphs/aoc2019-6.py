@@ -57,8 +57,6 @@ def part2(orbits):
     Returns an integer
     """
     ### Replace with your code
-    target = orbits["SAN"]
-    start = None
     start = orbits["YOU"]
     counter = 0
     queue = []
