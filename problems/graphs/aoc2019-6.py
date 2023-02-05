@@ -57,16 +57,30 @@ def part2(orbits):
     Returns an integer
     """
     ### Replace with your code
-    for child, parent in orbits.items():
-        if parent not in orbits:
-            current = parent
-            break
-    graph = Node(current, [])
-    return construct_graph(set(), graph)
-
-def construct_graph(current, graph):
-    pass
-
+    target = orbits["SAN"]
+    start = None
+    start = orbits["YOU"]
+    counter = 0
+    queue = []
+    queue.append((start,counter))
+    visited = {start}
+    while len(queue) > 0:
+        current = queue.pop(0)
+        visited.add(current[0])
+        neighbors = []
+        for key,val in orbits.items(): #this searches for non-main orbitals
+            if val == current[0]:
+                neighbors.append((key,current[1]+1))
+        try:
+            neighbors.append((orbits[current[0]], current[1]+1)) #this searches for main orbitals
+        except KeyError:
+            pass
+        for keyn, countern in neighbors:
+            if keyn not in visited:
+                if keyn == "SAN":
+                    return countern-1
+                queue.append((keyn,countern))
+    return None
 
 ############################################
 ###                                      ###
