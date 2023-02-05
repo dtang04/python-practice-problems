@@ -13,7 +13,11 @@ def find_closest_value(x):
     
     # YOUR CODE HERE
     # Replace None with an appropriate return value
-    return None
+    mean = np.mean(x) #If not specified an axis, np.mean will just return the mean of all elements
+    y = np.absolute(x - mean)
+    ind = np.where(y == min(y))[0][0]
+    val = x[ind]
+    return (ind,val)
     
 
 #############################################################
